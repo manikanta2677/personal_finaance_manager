@@ -1,69 +1,186 @@
-# React + TypeScript + Vite
+# 💸 Expense Tracker Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack **MERN** (MongoDB, Express.js, React + Vite, Node.js) application for tracking your income and expenses. Designed with a **modern gradient UI**, includes **JWT-based authentication**, **global state management**, and interactive data visualizations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 User Registration & Login (JWT Auth)
+- 📊 Dashboard with Analytics (Pie + Line Charts)
+- ➕ Add, View, Edit & Delete Transactions
+- 🗂️ Manage Custom Categories (Income/Expense)
+- 📜 Transaction History with Filters
+- 📤 Export data to CSV and PDF format
+- 💡 Global State with React Context API
+- 🎨 Gradient UI with Tailwind CSS + ShadCN UI
+- ⚠️ 404 Not Found Page
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Frontend
+- **React** (with Vite + TypeScript)
+- **Tailwind CSS** for styling
+- **ShadCN UI** components
+- **React Router DOM** (routing)
+- **React Hook Form + Yup** (form validation)
+- **Recharts** for charts
+- **react-hot-toast** (notifications)
+- **jsPDF + FileSaver** (PDF/CSV export)
+- **papaParse
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Backend
+- **Node.js** with **Express.js**
+- **MongoDB Atlas** with **Mongoose**
+- **JWT** for auth
+- **Bcrypt** for password hashing
+
+---
+
+##  Project Structure
+
+```
+Expense-Management-System/
+│
+├── client/                              # Frontend (React + Vite)
+│   ├── public/
+│   │   └── icon.png
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── axios.ts
+│   │   ├── assets/
+│   │   │   └── react.svg
+│   │   ├── components/
+│   │   │   └── Layout.tsx
+│   │   ├──  context/
+│   │   │   └──AuthContext.tsx
+│   │   ├── pages/
+│   │   │   └──AddTransaction.tsx
+│   │   │   └──Auth.tsx
+│   │   │   └──Category.tsx
+│   │   │   └──Dashboard.tsx
+│   │   │   └──Home.tsx
+│   │   │   └──NotFound.tsx
+│   │   │   └──TransactionHistory.tsx
+│   │   ├── routes/
+│   │   │   └── ProtectedRoute.tsx
+│   │   ├── utils/
+│   │   │   └── validationSchema.ts
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   ├── main.tsx
+│   │   └── vite-env.d.ts
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── tsconfig.app.json
+│   └── vite.config.ts         
+│
+├── server/                             # Backend (Node + Express)
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   └── categoryController.ts
+│   │   │   └── transactionController.ts
+│   │   │   └── userController.ts
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.ts
+│   │   ├── models/
+│   │   │   └── Category.ts
+│   │   │   └── Transaction.ts
+│   │   │   └── User.ts
+│   │   ├── routes/
+│   │   │   └── categoryRoutes.ts
+│   │   │   └── transactionRoutes.ts
+│   │   │   └── userRoutes.ts
+│   │   ├── utils/
+│   │   │   └── createDefaultCategorles.ts
+│   │   │   └── generatetoken.ts
+│   │   └── index.ts
+│   ├── .env
+│   ├── package.json
+│   ├── package-lock.json
+│   └── tsconfig.json
+│
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+ ## 🧑‍💻 Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1️⃣ Clone the Repo
+
 ```
+git clone https://github.com/Kajjayamadithya/Expense-Management-System.git
+cd Expense-Management-System
+```
+
+### 2️⃣ Setup Backend
+
+```
+cd server
+npm install < the dependecies which we want to install >
+```
+
+Create `.env` file:
+
+```env
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+PORT=5000
+```
+
+Start the server:
+
+```
+cd client
+npm run dev
+```
+
+### 3️⃣ Setup Frontend
+
+```
+cd client
+First initialize the react project with the commands then we need to run the commands which are below 
+npm install
+npm run dev
+```
+
+---
+
+## 🔐 Authentication Flow
+
+- Users register or login via `/auth`
+- JWT token stored in `localStorage`
+- Token is attached to every API request (via Axios interceptor)
+- Protected routes (Dashboard, Add Transaction, History) are guarded
+
+---
+## 🖼️ Screenshots
+ #Home page
+ ![Home page](<screenshots/Screenshot 2025-07-28 194717.png>)
+ #Login page
+![Login page](<screenshots/Screenshot 2025-07-28 194731.png>)
+ #Layout page
+ ![Layout page](<screenshots/Screenshot 2025-07-28 194756.png>)
+ #Dashboard page
+ ![Dashboard page](<screenshots/Screenshot 2025-07-28 194811.png>)
+ #Transaction History page
+![Transaction History page](<screenshots/Screenshot 2025-07-28 194831.png>)
+
+## ⚙️ Additional Features 
+
+- ✅ Responsive UI
+- 🧠 404 Page on unknown routes
+- 📂 CSV Export of Transaction History
+
+
+
+
